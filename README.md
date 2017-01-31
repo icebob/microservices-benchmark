@@ -33,3 +33,17 @@ Suite: Call local actions
    Servicer         0.00%    (213,765 ops/sec)
 ```
 [![Result chart](https://cloud.highcharts.com/images/utideti/800.png)](http://cloud.highcharts.com/show/utideti)
+
+## Run benchmark
+Install dependencies
+```
+$ npm install
+```
+
+> For Hemera need to install [NATS](http://nats.io/) server too.
+
+Run
+Start nats server and 
+```
+$ npm start
+```

@@ -1,7 +1,7 @@
 "use strict";
 
 let Promise = require("bluebird");
-let Benchmarker = require("./benchmarker");
+let Benchmarker = require("benchmarkify");
 Benchmarker.printHeader("Microservices benchmarks");
 
 let bench = new Benchmarker({ async: true, name: "Call local actions", spinner: true });

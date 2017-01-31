@@ -1,10 +1,26 @@
-let _ = require("lodash");
-let Promise	= require("bluebird");
-let fs = require("fs");
-let path = require("path");
+const _ = require("lodash");
+const Promise	= require("bluebird");
+const fs = require("fs");
+const path = require("path");
 
-let chalk = require("chalk");
-let Benchmark = require("benchmark");
+const chalk = require("chalk");
+const Benchmark = require("benchmark");
+
+const ora = require('ora');
+const spinner = ora({ 
+	text: 'Running benchmark...', 
+	spinner: { 
+		interval: 400, 
+		"frames": [
+			".  ",
+			".. ",
+			"...",
+			" ..",
+			"  .",
+			"   "
+		]
+	} 
+});
 
 class Benchmarker {
 	constructor(opts) {
@@ -22,6 +38,14 @@ class Benchmarker {
 	}
 
 	add(name, fn, async = this.async) {
+		let self = this;
+		let onStart = function() {
+			if (self.opts.spinner !== false) {
+				spinner.text = `Running '${name}'...`;
+				spinner.start();
+			}
+		};
+
 		if (async) {
 			this.suite.add(name, {
 				defer: true,
@@ -31,10 +55,11 @@ class Benchmarker {
 						return fn().then(() => deferred.resolve());
 					else
 						return deferred.resolve();
-				}
+				},
+				onStart
 			});
 		} else {
-			this.suite.add(name, fn);
+			this.suite.add(name, { fn, onStart });
 		}
 	}
 
@@ -49,8 +74,12 @@ class Benchmarker {
 				let bench = event.target;
 				if (bench.error)
 					self.logger.error(chalk.red.bold(String(bench), bench.error.message, "\n", bench.error.stack || ""));
-				else
-					self.logger.log("››", String(bench));
+				else {
+					if (self.opts.spinner !== false)
+						spinner.succeed(String(bench));	
+					else
+						self.logger.log("››", String(bench));						
+				}
 			})
 			.on("complete", function() {
 				self.logger.log("");
@@ -73,11 +102,13 @@ class Benchmarker {
 				});
 				self.logger.log("-----------------------------------------------------------------------\n");
 
+				if (self.opts.spinner !== false)
+					spinner.stop();
+
 				resolve();
 			});
 
 			this.logger.log(chalk.magenta.bold("Suite:", this.opts.name));
-
 			this.suite.run({
 				defer: this.async,
 				async: this.async

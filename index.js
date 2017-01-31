@@ -4,7 +4,7 @@ let Promise = require("bluebird");
 let Benchmarker = require("./benchmarker");
 Benchmarker.printHeader("Microservices benchmarks");
 
-let bench = new Benchmarker({ async: true, name: "Call local actions" });
+let bench = new Benchmarker({ async: true, name: "Call local actions", spinner: true });
 
 let seneca;
 // Seneca

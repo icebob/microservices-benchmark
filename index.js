@@ -6,8 +6,8 @@ Benchmarker.printHeader("Microservices benchmarks");
 
 let bench = new Benchmarker({ async: true, name: "Call local actions", spinner: true });
 
-let seneca;
 // Seneca
+let seneca;
 (function () {
 	seneca = require("seneca")();
 
@@ -83,23 +83,16 @@ let nanoservices;
 	});
 })();
 
-// Servicer
+// Moleculer
 let broker;
 (function () {
 
-	const { ServiceBroker, Service } = require("servicer");
+	const { ServiceBroker, Service } = require("moleculer");
 	broker = new ServiceBroker();
 
 	new Service(broker, {
 		name: "math",
 		actions: {
-			/*
-			add: {
-				handler({ params }) {
-					return params.a + params.b;
-				}
-			},
-*/
 			add({ params }) {
 				return params.a + params.b;
 			}
@@ -107,7 +100,7 @@ let broker;
 	});
 	broker.start();
 
-	bench.add("Servicer", () => {
+	bench.add("Moleculer", () => {
 		// Return with Promise
 		return broker.call("math.add", { a: 5, b: 3 });
 	});

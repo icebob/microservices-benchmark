@@ -1,5 +1,5 @@
 # microservices-benchmark
-Benchmark of microservices frameworks for NodeJS
+Benchmark of microservices frameworks for NodeJS.
 
 ## Frameworks in benchmark
 
@@ -8,7 +8,7 @@ Benchmark of microservices frameworks for NodeJS
 | [Seneca](https://github.com/senecajs/seneca) | 3.2.2 | -
 | [Hemera](https://github.com/hemerajs/hemera) | 0.4.4 | -
 | [Nanoservices](https://github.com/SuperID/nanoservices) | 0.0.11 | -
-| [Servicer](https://github.com/icebob/servicer) | 0.3.0 | -
+| [Moleculer](https://github.com/ice-services/moleculer) | 0.4.0 | -
 
 ## Test runner computer
 ```
@@ -21,16 +21,15 @@ Benchmark of microservices frameworks for NodeJS
 ## Result
 ```
 Suite: Call local actions
+√ Seneca x 5,342 ops/sec ±2.64% (72 runs sampled)
+√ Hemera x 1,643 ops/sec ±3.80% (76 runs sampled)
+√ Nanoservices x 31,902 ops/sec ±0.56% (83 runs sampled)
+√ Moleculer x 239,099 ops/sec ±2.69% (81 runs sampled)
 
-›› Seneca x 5,019 ops/sec ±2.57% (73 runs sampled)
-›› Hemera x 1,705 ops/sec ±3.10% (80 runs sampled)
-›› Nanoservices x 32,941 ops/sec ±2.33% (82 runs sampled)
-›› Servicer x 213,765 ops/sec ±3.41% (83 runs sampled)
-
-   Seneca         -97.65%      (5,019 ops/sec)
-   Hemera         -99.20%      (1,705 ops/sec)
-   Nanoservices   -84.59%     (32,941 ops/sec)
-   Servicer         0.00%    (213,765 ops/sec)
+   Seneca         -97.77%      (5,342 ops/sec)
+   Hemera         -99.31%      (1,643 ops/sec)
+   Nanoservices   -86.66%     (31,902 ops/sec)
+   Moleculer        0.00%    (239,099 ops/sec)
 ```
 [![Result chart](https://cloud.highcharts.com/images/utideti/800.png)](http://cloud.highcharts.com/show/utideti)
 

@@ -3,12 +3,12 @@ Benchmark of microservices frameworks for NodeJS.
 
 ## Frameworks in benchmark
 
-| Package | Version |  |
-| ------- | ----- | ------- |
-| [Seneca](https://github.com/senecajs/seneca) | 3.2.2 | -
-| [Hemera](https://github.com/hemerajs/hemera) | 0.4.4 | -
-| [Nanoservices](https://github.com/SuperID/nanoservices) | 0.0.11 | -
-| [Moleculer](https://github.com/ice-services/moleculer) | 0.4.0 | -
+| Package | Version |
+| ------- | ----- |
+| [Seneca](https://github.com/senecajs/seneca) | 3.2.2 |
+| [Hemera](https://github.com/hemerajs/hemera) | 0.4.4 |
+| [Nanoservices](https://github.com/SuperID/nanoservices) | 0.0.11 |
+| [Moleculer](https://github.com/ice-services/moleculer) | 0.4.0 |
 
 ## Test runner computer
 ```
@@ -38,10 +38,13 @@ Install dependencies
 ```
 $ npm install
 ```
+or
+```
+$ yarn
+```
 
 > For Hemera need to install [NATS](http://nats.io/) server too.
 
-Run
 Start nats server and 
 ```
 $ npm start

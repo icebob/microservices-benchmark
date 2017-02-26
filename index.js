@@ -83,6 +83,22 @@ let nanoservices;
 	});
 })();
 
+// Studio
+(function () {
+
+	let Studio = require('studio');
+	Studio(function mathAddService(a, b){
+		return a + b;
+	});
+
+	let service = Studio("mathAddService");
+
+	bench.add("Studio", () => {
+		return service(5, 3);
+	});
+
+})();
+
 // Moleculer
 let broker;
 (function () {

@@ -21,6 +21,7 @@
     "nats-hemera": "0.4.4",
     "ora": "1.1.0",
     "seneca": "3.2.2",
-    "servicer": "0.3.0"
+    "servicer": "0.3.0",
+    "studio": "0.13.3"
   }
 }

@@ -14,23 +14,25 @@ Benchmark of microservices frameworks for NodeJS.
 ## Test runner computer
 ```
    Windows_NT 6.1.7601 x64
-   Node.JS: 6.9.2
-   V8: 5.1.281.88
+   Node.JS: 6.10.0
+   V8: 5.1.281.93
    Intel(R) Core(TM) i7-4770K CPU @ 3.50GHz × 8
 ```
 
 ## Result
 ```
 Suite: Call local actions
-√ Seneca x 5,342 ops/sec ±2.64% (72 runs sampled)
-√ Hemera x 1,643 ops/sec ±3.80% (76 runs sampled)
-√ Nanoservices x 31,902 ops/sec ±0.56% (83 runs sampled)
-√ Moleculer x 239,099 ops/sec ±2.69% (81 runs sampled)
+√ Seneca x 5,179 ops/sec ±3.26% (68 runs sampled)
+√ Hemera x 1,764 ops/sec ±3.06% (78 runs sampled)
+√ Nanoservices x 33,476 ops/sec ±0.59% (85 runs sampled)
+√ Studio x 1,441,898 ops/sec ±2.29% (87 runs sampled)
+√ Moleculer x 481,289 ops/sec ±3.32% (88 runs sampled)
 
-   Seneca         -97.77%      (5,342 ops/sec)
-   Hemera         -99.31%      (1,643 ops/sec)
-   Nanoservices   -86.66%     (31,902 ops/sec)
-   Moleculer        0.00%    (239,099 ops/sec)
+   Seneca         -99.64%      (5,179 ops/sec)
+   Hemera         -99.88%      (1,764 ops/sec)
+   Nanoservices   -97.68%     (33,476 ops/sec)
+   Studio           0.00%   (1,441,898 ops/sec)
+   Moleculer      -66.62%    (481,289 ops/sec)
 ```
 [![Result chart](https://cloud.highcharts.com/images/utideti/800.png)](http://cloud.highcharts.com/show/utideti)
 
@@ -44,7 +46,7 @@ or
 $ yarn
 ```
 
-> For Hemera need to install [NATS](http://nats.io/) server too.
+> For Hemera need to install a [NATS](http://nats.io/) server too.
 
 Start nats server and 
 ```

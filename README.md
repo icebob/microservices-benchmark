@@ -5,11 +5,11 @@ Benchmark of microservices frameworks for NodeJS.
 
 | Package | Version |
 | ------- | ----- |
-| [Seneca](https://github.com/senecajs/seneca) | 3.2.2 |
-| [Hemera](https://github.com/hemerajs/hemera) | 0.4.4 |
+| [Seneca](https://github.com/senecajs/seneca) | 3.3.0 |
+| [Hemera](https://github.com/hemerajs/hemera) | 0.10.4 |
 | [Nanoservices](https://github.com/SuperID/nanoservices) | 0.0.11 |
-| [Studio](https://github.com/ericholiveira/studio) | 0.13.3 |
-| [Moleculer](https://github.com/ice-services/moleculer) | 0.4.0 |
+| [Studio](https://github.com/ericholiveira/studio) | 0.13.4 |
+| [Moleculer](https://github.com/ice-services/moleculer) | 0.6.0 |
 
 ## Test runner computer
 ```

@@ -1,10 +1,11 @@
 "use strict";
 
 let Promise = require("bluebird");
-let Benchmarker = require("benchmarkify");
-Benchmarker.printHeader("Microservices benchmarks");
+let Benchmarkify = require("benchmarkify");
 
-let bench = new Benchmarker({ async: true, name: "Call local actions", spinner: true });
+let benchmark = new Benchmarkify("Microservices benchmarks").printHeader();
+
+let bench = benchmark.createSuite("Call local actions");
 
 // Seneca
 let seneca;
@@ -16,14 +17,12 @@ let seneca;
 		done(null, { res: msg.a + msg.b });
 	});
 
-	bench.add("Seneca", () => {
-		return new Promise(resolve => {
-			seneca.act({ cmd: 'add', a: 5, b: 3 }, (err, res) => {
-				if (err)
-					return console.error(err);
+	bench.add("Seneca", done => {
+		seneca.act({ cmd: 'add', a: 5, b: 3 }, (err, res) => {
+			if (err)
+				return console.error(err);
 
-				resolve(res);
-			});
+			done();
 		});
 	});
 
@@ -45,14 +44,12 @@ let hemera;
 		});
 	});
 
-	bench.add("Hemera", () => {
-		return new Promise(resolve => {
-			hemera.act({ topic: 'math', cmd: 'add', a: 5, b: 3 }, (err, res) => {
-				if (err)
-					return console.error(err);
+	bench.add("Hemera", done => {
+		hemera.act({ topic: 'math', cmd: 'add', a: 5, b: 3 }, (err, res) => {
+			if (err)
+				return console.error(err);
 
-				resolve(res);
-			});
+			done();
 		});
 	});
 
@@ -71,14 +68,12 @@ let nanoservices;
 		ctx.result(ctx.params.a + ctx.params.b);
 	});
 
-	bench.add("Nanoservices", () => {
-		return new Promise(resolve => {
-			nanoservices.call('add', { a: 5, b: 3 }, (err, ret) => {
-				if (err)
-					return console.error(err);
-				
-				resolve(ret);
-			});
+	bench.add("Nanoservices", done => {
+		nanoservices.call('add', { a: 5, b: 3 }, (err, ret) => {
+			if (err)
+				return console.error(err);
+			
+			done();
 		});
 	});
 })();
@@ -93,8 +88,9 @@ let nanoservices;
 
 	let service = Studio("mathAddService");
 
-	bench.add("Studio", () => {
-		return service(5, 3);
+	bench.add("Studio", done => {
+		service(5, 3);
+		done();
 	});
 
 })();
@@ -103,10 +99,10 @@ let nanoservices;
 let broker;
 (function () {
 
-	const { ServiceBroker, Service } = require("moleculer");
+	const { ServiceBroker } = require("moleculer");
 	broker = new ServiceBroker();
 
-	new Service(broker, {
+	broker.createService({
 		name: "math",
 		actions: {
 			add({ params }) {
@@ -116,10 +112,7 @@ let broker;
 	});
 	broker.start();
 
-	bench.add("Moleculer", () => {
-		// Return with Promise
-		return broker.call("math.add", { a: 5, b: 3 });
-	});
+	bench.add("Moleculer", done => broker.call("math.add", { a: 5, b: 3 }).then(done));
 
 })();
 

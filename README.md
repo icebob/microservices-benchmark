@@ -22,19 +22,17 @@ Benchmark of microservices frameworks for NodeJS.
 ## Result
 ```
 Suite: Call local actions
-√ Seneca x 5,179 ops/sec ±3.26% (68 runs sampled)
-√ Hemera x 1,764 ops/sec ±3.06% (78 runs sampled)
-√ Nanoservices x 33,476 ops/sec ±0.59% (85 runs sampled)
-√ Studio x 1,441,898 ops/sec ±2.29% (87 runs sampled)
-√ Moleculer x 481,289 ops/sec ±3.32% (88 runs sampled)
+√ Seneca*                 11,723 rps
+√ Hemera*                  4,727 rps
+√ Nanoservices*           71,189 rps
+√ Moleculer*           1,039,045 rps
 
-   Seneca         -99.64%      (5,179 ops/sec)
-   Hemera         -99.88%      (1,764 ops/sec)
-   Nanoservices   -97.68%     (33,476 ops/sec)
-   Studio           0.00%   (1,441,898 ops/sec)
-   Moleculer      -66.62%    (481,289 ops/sec)
+   Seneca* (#)                0%         (11,723 rps)   (avg: 85μs)
+   Hemera*               -59.68%          (4,727 rps)   (avg: 211μs)
+   Nanoservices*        +507.24%         (71,189 rps)   (avg: 14μs)
+   Moleculer*         +8,763.08%      (1,039,045 rps)   (avg: 962ns)
 ```
-[![Result chart](https://cloud.highcharts.com/images/utideti/800.png)](http://cloud.highcharts.com/show/utideti)
+[![Result chart](https://cloud.highcharts.com/images/utideti/3/800.png)](http://cloud.highcharts.com/show/utideti)
 
 ## Run benchmark
 Install dependencies

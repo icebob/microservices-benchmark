@@ -102,10 +102,10 @@ let nanoservices;
 let broker;
 (function () {
 
-	const { ServiceBroker, Service } = require("moleculer");
+	const { ServiceBroker } = require("moleculer");
 	broker = new ServiceBroker();
 
-	new Service(broker, {
+	broker.createService({
 		name: "math",
 		actions: {
 			add({ params }) {

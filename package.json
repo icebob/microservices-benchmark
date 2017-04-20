@@ -1,7 +1,7 @@
 {
   "name": "microservices-benchmark",
   "version": "1.2.0",
-  "description": "",
+  "description": "NodeJS microservices benchmark",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -19,7 +19,6 @@
     "nats": "0.7.16",
     "nats-hemera": "1.0.1",
     "seneca": "3.3.0",
-    "servicer": "0.4.0",
     "studio": "0.13.4"
   }
 }

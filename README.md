@@ -62,6 +62,6 @@ $ yarn
 
 Start nats server (`gnatsd`) and 
 ```
-$ npm bench local
-$ npm bench remote
+$ npm run bench local
+$ npm run bench remote
 ```

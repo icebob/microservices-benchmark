@@ -28,7 +28,7 @@ let seneca;
 
 })();
 
-// Hemera
+/* Hemera (not relevant)
 let hemera;
 (function () {
 
@@ -54,6 +54,7 @@ let hemera;
 	});
 
 })();
+*/
 
 // Nanoservices
 let nanoservices;
@@ -77,26 +78,6 @@ let nanoservices;
 		});
 	});
 })();
-
-
-// Studio
-/*
-(function () {
-
-	let Studio = require('studio');
-	Studio(function mathAddService(a, b){
-		return a + b;
-	});
-
-	let service = Studio("mathAddService");
-
-	bench.add("Studio", done => {
-		service(5, 3);
-		done();
-	});
-
-})();
-*/
 
 // Moleculer
 let broker;
@@ -124,7 +105,6 @@ let broker;
 
 setTimeout(() => {
 	benchmark.run([bench]).then(() => {
-		hemera.close();
 		broker.stop();
 	});
 }, 1000);

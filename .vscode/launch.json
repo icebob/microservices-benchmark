@@ -9,7 +9,10 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"program": "${workspaceRoot}/index.js",
-			"cwd": "${workspaceRoot}"
+			"cwd": "${workspaceRoot}",
+			"args": [
+				"remote"
+			]
 		}
 	]
 }

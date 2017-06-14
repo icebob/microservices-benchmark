@@ -63,28 +63,26 @@ let hemera2;
 
 })();
 
-/* Nanoservices (don't support remote calls)
-let nanoservices;
+// Cote
+let cote_resp;
+let cote_req;
 (function () {
+	const cote = require('cote');
 
-	const { Manager } = require('nanoservices');
+	cote_resp = new cote.Responder({ name: 'bench-remote' });
+	cote_req = new cote.Requester({ name: 'bench-remote' });
+	
+	cote_resp.on('add', (req, cb) => {
+		cb(req.a + req.b);
+	});	
 
-	nanoservices = new Manager();
-
-	nanoservices.register('add', function (ctx) {
-		// ctx.debug('add: a=%s, b=%s', ctx.params.a, ctx.params.b);
-		ctx.result(ctx.params.a + ctx.params.b);
-	});
-
-	bench.add("Nanoservices", done => {
-		nanoservices.call('add', { a: 5, b: 3 }, (err, ret) => {
-			if (err)
-				console.error(err);
-			
+	bench.add("Cote", done => {
+		cote_req.send({ type: 'add', a: 5, b: 3 }, res => { 
 			done();
 		});
 	});
-})();*/
+
+})();
 
 // Moleculer
 let broker1;
@@ -127,4 +125,4 @@ setTimeout(() => {
 		seneca1.close();
 	});
 
-}, 1000);
+}, 2000);

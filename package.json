@@ -1,6 +1,6 @@
 {
   "name": "microservices-benchmark",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "NodeJS microservices benchmark",
   "main": "index.js",
   "scripts": {
@@ -14,11 +14,12 @@
   "dependencies": {
     "benchmarkify": "2.1.0",
     "bluebird": "3.5.0",
+    "cote": "0.14.1",
     "lodash": "4.17.4",
-    "moleculer": "0.7.3",
+    "moleculer": "0.7.6",
     "nanoservices": "0.0.11",
     "nats": "0.7.20",
-    "nats-hemera": "1.2.12",
+    "nats-hemera": "1.3.2",
     "seneca": "3.3.0",
     "seneca-nats-transport": "2.0.3"
   },

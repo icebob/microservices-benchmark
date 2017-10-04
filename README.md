@@ -31,7 +31,7 @@ Suite: Call local actions
    Nanoservices*      -95.34%         (94,116 rps)   (avg: 10μs)
    Seneca*            -99.33%         (13,621 rps)   (avg: 73μs)
 ```
-[![Result chart](https://cloud.highcharts.com/images/utideti/5/800.png)](http://cloud.highcharts.com/show/utideti)
+[![Result chart](https://cloud.highcharts.com/images/utideti/6/800.png)](http://cloud.highcharts.com/show/utideti)
 
 ## Remote (via NATS) requests
 
@@ -48,7 +48,7 @@ Suite: Call remote actions
    Cote*                0%         (14,163 rps)   (avg: 70μs)
    Seneca*         -79.77%          (2,865 rps)   (avg: 349μs)
 ```
-[![Result chart](https://cloud.highcharts.com/images/abyfite/1/800.png)](http://cloud.highcharts.com/show/abyfite)
+[![Result chart](https://cloud.highcharts.com/images/abyfite/2/800.png)](http://cloud.highcharts.com/show/abyfite)
 
 ## Run benchmark
 Install dependencies

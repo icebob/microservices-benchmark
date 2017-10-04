@@ -7,27 +7,6 @@ let benchmark = new Benchmarkify("Microservices benchmark").printHeader();
 
 const bench = benchmark.createSuite("Call local actions");
 
-// Seneca
-let seneca;
-(function () {
-	seneca = require("seneca")();
-
-	seneca.add({ cmd: 'add' }, (msg, done) => {
-		// console.log("Call", msg);
-		done(null, { res: msg.a + msg.b });
-	});
-
-	bench.ref("Seneca", done => {
-		seneca.act({ cmd: 'add', a: 5, b: 3 }, (err, res) => {
-			if (err)
-				console.error(err);
-
-			done();
-		});
-	});
-
-})();
-
 /* Hemera (not relevant)
 let hemera;
 (function () {
@@ -56,6 +35,29 @@ let hemera;
 })();
 */
 
+// Moleculer
+let broker;
+(function () {
+
+	const { ServiceBroker } = require("moleculer");
+	broker = new ServiceBroker();
+
+	broker.createService({
+		name: "math",
+		actions: {
+			add({ params }) {
+				return params.a + params.b;
+			}
+		}
+	});
+	broker.start();
+
+	bench.add("Moleculer", done => {
+		broker.call("math.add", { a: 5, b: 3 }).then(done);
+	});
+
+})();
+
 // Nanoservices
 let nanoservices;
 (function () {
@@ -79,26 +81,23 @@ let nanoservices;
 	});
 })();
 
-// Moleculer
-let broker;
+// Seneca
+let seneca;
 (function () {
+	seneca = require("seneca")();
 
-	const { ServiceBroker } = require("moleculer");
-	broker = new ServiceBroker();
-
-	broker.createService({
-		name: "math",
-		actions: {
-			add({ params }) {
-				return params.a + params.b;
-			}
-		}
+	seneca.add({ cmd: 'add' }, (msg, done) => {
+		// console.log("Call", msg);
+		done(null, { res: msg.a + msg.b });
 	});
-	broker.start();
 
-	bench.add("Moleculer", done => {
-		// Return with Promise
-		broker.call("math.add", { a: 5, b: 3 }).then(done).catch(console.error);
+	bench.add("Seneca", done => {
+		seneca.act({ cmd: 'add', a: 5, b: 3 }, (err, res) => {
+			if (err)
+				console.error(err);
+
+			done();
+		});
 	});
 
 })();

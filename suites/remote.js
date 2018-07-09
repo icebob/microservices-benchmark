@@ -13,15 +13,14 @@ let broker2;
 (function () {
 
 	const { ServiceBroker } = require("moleculer");
-	const Transporter = require("moleculer").Transporters.NATS;
-	broker1 = new ServiceBroker({ nodeID: "node-1", transporter: new Transporter() });
-	broker2 = new ServiceBroker({ nodeID: "node-2", transporter: new Transporter() });
+	broker1 = new ServiceBroker({ nodeID: "node-1", transporter: "TCP" });
+	broker2 = new ServiceBroker({ nodeID: "node-2", transporter: "TCP" });
 
 	broker2.createService({
 		name: "math",
 		actions: {
-			add({ params }) {
-				return params.a + params.b;
+			add(ctx) {
+				return ctx.params.a + ctx.params.b;
 			}
 		}
 	});
@@ -99,9 +98,9 @@ let seneca2;
 
 })();
 
-setTimeout(() => {
+Promise.delay(3000).then(() => {
 
-	benchmark.run([bench]).then(() => {
+	return benchmark.run([bench]).then(() => {
 		hemera1.close();
 		hemera2.close();
 
@@ -110,6 +109,9 @@ setTimeout(() => {
 
 		seneca2.close();
 		seneca1.close();
+
+		cote_req.close();
+		cote_resp.close();
 	});
 
-}, 2000);
+});

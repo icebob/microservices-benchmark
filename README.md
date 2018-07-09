@@ -6,15 +6,15 @@ Benchmark of microservices frameworks for NodeJS.
 | Package | Version |
 | ------- | ----- |
 | [Seneca](https://github.com/senecajs/seneca) | 3.3.0 |
-| [Hemera](https://github.com/hemerajs/hemera) | 2.1.0 |
+| [Hemera](https://github.com/hemerajs/hemera) | 5.8.6 |
 | [Nanoservices](https://github.com/SuperID/nanoservices) | 0.0.11 |
-| [Moleculer](https://github.com/ice-services/moleculer) | 0.11.1 |
+| [Moleculer](https://github.com/ice-services/moleculer) | 0.13.0 |
 
 ## Test runner computer
 ```
    Windows_NT 6.1.7601 x64
-   Node.JS: 8.4.0
-   V8: 6.0.286.52
+   Node.JS: 8.11.0
+   V8: 6.2.414.50
    Intel(R) Core(TM) i7-4770K CPU @ 3.50GHz × 8
 ```
 
@@ -23,30 +23,30 @@ Benchmark of microservices frameworks for NodeJS.
 ### Result
 ```
 Suite: Call local actions
-√ Moleculer*           2,021,189 rps
-√ Nanoservices*           94,116 rps
-√ Seneca*                 13,621 rps
+√ Moleculer*           1,713,579 rps
+√ Nanoservices*           90,510 rps
+√ Seneca*                 13,252 rps
 
-   Moleculer*              0%      (2,021,189 rps)   (avg: 494ns)
-   Nanoservices*      -95.34%         (94,116 rps)   (avg: 10μs)
-   Seneca*            -99.33%         (13,621 rps)   (avg: 73μs)
+   Moleculer*              0%      (1,713,579 rps)   (avg: 583ns)
+   Nanoservices*      -94.72%         (90,510 rps)   (avg: 11μs)
+   Seneca*            -99.23%         (13,252 rps)   (avg: 75μs)
 ```
 [![Result chart](https://cloud.highcharts.com/images/utideti/6/800.png)](http://cloud.highcharts.com/show/utideti)
 
-## Remote (via NATS) requests
+## Remote (via transporter) requests
 
 ### Result
 ```
 Suite: Call remote actions
-√ Moleculer*            8,274 rps
-√ Hemera*               5,225 rps
-√ Cote*                14,163 rps
-√ Seneca*               2,865 rps
+√ Moleculer*           10,445 rps
+√ Hemera*               6,655 rps
+√ Cote*                15,442 rps
+√ Seneca*               2,947 rps
 
-   Moleculer*      -41.58%          (8,274 rps)   (avg: 120μs)
-   Hemera*         -63.11%          (5,225 rps)   (avg: 191μs)
-   Cote*                0%         (14,163 rps)   (avg: 70μs)
-   Seneca*         -79.77%          (2,865 rps)   (avg: 349μs)
+   Moleculer*      -32.36%         (10,445 rps)   (avg: 95μs)
+   Hemera*          -56.9%          (6,655 rps)   (avg: 150μs)
+   Cote*                0%         (15,442 rps)   (avg: 64μs)
+   Seneca*         -80.91%          (2,947 rps)   (avg: 339μs)
 ```
 [![Result chart](https://cloud.highcharts.com/images/abyfite/2/800.png)](http://cloud.highcharts.com/show/abyfite)
 

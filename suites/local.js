@@ -102,8 +102,6 @@ let seneca;
 
 })();
 
-setTimeout(() => {
-	benchmark.run([bench]).then(() => {
-		broker.stop();
-	});
-}, 1000);
+Promise.delay(1000).then(() => benchmark.run([bench])).then(() => {
+	broker.stop();
+});

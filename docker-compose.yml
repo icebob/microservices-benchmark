@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  local-benchmark:
+    container_name: benchmark_local
+    restart: on-failure
+    image: micro-benchmark
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      SUITE_NAME: local
+    networks:
+      - micro-benchmark
+
+  remote-benchmark:
+    container_name: benchmark_remote
+    restart: on-failure
+    image: micro-benchmark
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      SUITE_NAME: remote
+      NATS_URL: nats:4222
+    networks:
+      - micro-benchmark
+    depends_on:
+      - nats
+    links:
+      - nats
+
+  nats:
+    container_name: benchmark_nats
+    image: nats:1.4.1
+    networks:
+      - micro-benchmark
+
+networks:
+  micro-benchmark:
+    driver: bridge

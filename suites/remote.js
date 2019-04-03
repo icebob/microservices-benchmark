@@ -7,6 +7,8 @@ let benchmark = new Benchmarkify("Microservices benchmark").printHeader();
 
 const bench = benchmark.createSuite("Call remote actions");
 
+const natsServerUrl = "nats://" + (process.env.NATS_URL || "localhost:4222")
+
 // Moleculer
 let broker1;
 let broker2;
@@ -39,7 +41,7 @@ let hemera2;
 (function () {
 
 	const Hemera = require('nats-hemera');
-	const nats = require('nats').connect("nats://localhost:4222");
+	const nats = require('nats').connect(natsServerUrl);
 
 	hemera1 = new Hemera(nats, { logLevel: 'error' });
 	hemera2 = new Hemera(nats, { logLevel: 'error' });
